@@ -1,0 +1,10 @@
+flask
+requests
+
+# Development package
+## Unit Testing
+pytest
+pytest-mock
+
+## Linting
+black

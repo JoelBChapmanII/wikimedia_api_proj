@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  wikipedia_api:
+    build: .
+    container_name: wikipedia_api
+    volumes:
+      - ./wikipedia_api:/app/wikipedia_api
+    ports:
+      - "8080:8080"
