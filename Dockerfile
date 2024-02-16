@@ -3,7 +3,8 @@ FROM python:3.11.3
 # Set working dir
 WORKDIR /app
 
-# Set up dependencies, I like to do these first so they don't have to be reinstalled when docker layers change
+# Set up dependencies, I like to do these first so they don't have to be reinstalled when docker layers change with
+# smaller files later.
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt
 

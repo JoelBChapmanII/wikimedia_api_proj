@@ -82,20 +82,33 @@ def monthly_views(article: str, month: str, year: str) -> dict:
     try:
         year_int = int(year)
     except ValueError as e:
-        return ({"Error": f"Unable to cast year as int: {year}"}, 400)
+        return (
+            {"Error": f"Unable to cast year as int: {year}"},
+            400,
+            {"Content-Type": "application/json"},
+        )
     except Exception as e:
         return (
             {"Error": f"Unhandled exception caught casting year as int: {year}"},
             400,
+            {"Content-Type": "application/json"},
         )
 
     # Verify the month is valid
     if month_name not in VALID_MONTHS:
-        return ({"Error": f"Invalid month given: {month}"}, 400)
+        return (
+            {"Error": f"Invalid month given: {month}"},
+            400,
+            {"Content-Type": "application/json"},
+        )
 
     # Verify year is valid, 2015 was the earliest year I could query
     if not 2015 <= year_int <= (datetime.now().year):
-        return ({"Error": f"Year is not valid: {year_int}"}, 400)
+        return (
+            {"Error": f"Year is not valid: {year_int}"},
+            400,
+            {"Content-Type": "application/json"},
+        )
 
     # Get the start and end date of the provided month and year
     start_date, end_date = generate_month_dates(month, year_int)
@@ -113,9 +126,10 @@ def monthly_views(article: str, month: str, year: str) -> dict:
         )
     else:
         return (
-            status_code,
             {
                 "Error": data,
                 "Further_Information": "https://www.mediawiki.org/wiki/API:REST_API/Status_codes",
             },
+            status_code,
+            {"Content-Type": "application/json"},
         )

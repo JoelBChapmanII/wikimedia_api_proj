@@ -9,13 +9,13 @@ from wikimedia/wikipedia. Docker and docker compose are used to show how this ap
 
 ## Project Structure
 
-This project uses flask blueprints to allow for easy additions and compartmentalizing routes and api endpoints. To add a
-new API path create a new directory under [wikipedia_api](./wikipedia_api/) and register the blueprint in
+This project uses flask blueprints to allow for easy additions and compartmentalization of routes and api endpoints.
+To add a new API path create a new directory under [wikipedia_api](./wikipedia_api/) and register the blueprint in
 [init_app](./wikipedia_api/__init__.py). See the [wikipedia_api/views](./wikipedia_api/views/) as an example.
 
 ```bash
 ├── Dockerfile # The dockerfile used to build this application
-├── README.md
+├── README.md # You're here!
 ├── config.py # Configurations for the application
 ├── docker-compose-dev.yml # A development focused docker compose file
 ├── docker-compose.yml # A docker compose file to run the application without the intent of testing, updating, development
@@ -40,13 +40,13 @@ Then run the container by issuing:
 docker compose up
 ```
 
-To stop the container and its processes run:
+To stop the container and clean up:
 
 ```bash
 docker compose down
 ```
 
-__Note:__ It would be best to eventually publish this to a registry but this work for a demonstration.
+__Note:__ It would be best to eventually publish this to a registry but this works for a demonstration.
 
 ## Usage
 
@@ -83,7 +83,7 @@ development docker-compose file. The wikipedia_api directory is mounted as a vol
 easy development and debugging.
 
 ```bash
-docker build . -t wikiwrapperdev
+docker compose build
 
 # Optionally pass -d, but not passing -d give a live terminal with logs
 docker compose -f docker-compose-dev.yml up
