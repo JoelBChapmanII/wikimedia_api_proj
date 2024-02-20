@@ -1,5 +1,5 @@
-flask
-requests
+flask==3.0.*
+requests==2.31.*
 
 # Development package
 ## Unit Testing
