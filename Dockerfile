@@ -1,4 +1,4 @@
-FROM python:3.11.3
+FROM python:3.11
 
 # Set working dir
 WORKDIR /app
@@ -11,7 +11,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY wikipedia_api wikipedia_api
 
 # Add Configurations for start up
-COPY wsgi.py config.py .
+COPY wsgi.py config.py ./
 
 # Run the flask app
 CMD ["flask", "--app", "wsgi", "run", "-h", "0.0.0.0", "-p", "8080", "--debug", "--with-threads"]
